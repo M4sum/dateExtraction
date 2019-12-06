@@ -26,6 +26,7 @@ def upload_image():
               print('Hi, im exception')
               passed = False
             if passed:
+              print(filepath)
               return redirect(url_for('function', file_path = filepath ))
     return render_template("upload_image.html")
 
