@@ -16,9 +16,10 @@ def upload_image():
               passed = False
             try:
               filename = image_file.filename
+              print(image_file)
               # filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
               filepath = '/uploads/'+filename
-              image_file.save(filepath)
+              # image_file.save(filepath)
               passed = True
               print('No exception')
 
