@@ -144,16 +144,20 @@ def extractDate(file_path):
     image=cv2.cvtColor(dst,cv2.COLOR_BGR2GRAY)
     image = cv2.resize(image,(dim[0],dim[1]),interpolation = cv2.INTER_AREA)
     img_th = cv2.adaptiveThreshold(image,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,7,8)
+    # cv2.imshow('filpoly',image)
     # cv2.waitKey(0)
     cv2.destroyAllWindows()
     text = pytesseract.image_to_string(img_th)
-    # print(text)
+    print(text)
     text = text.split(' ')
-    regex = '((\d{2})|(\d))[\/-]((\d{2})|(\d))[\/-]((\d{4})|(\d{2}))'
+    regex = r'((\d{2})|(\d))[\/-]((\d{2})|(\d))[\/-]((\d{4})|(\d{2}))'
     for t in text:
         if re.match(regex,t):
             return t
     return None
+
+# date = extractDate("uploads/receipt.jpeg")
+# print("date: ", date)
 # 07-15-19 - done
 # 07/28/18- done
 # # 12/28/2017 - done

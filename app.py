@@ -16,10 +16,9 @@ def upload_image():
               passed = False
             try:
               filename = image_file.filename
-              print(image_file)
               # filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-              filepath = '/uploads/'+filename
-              # image_file.save(filepath)
+              filepath = 'uploads/'+filename
+              image_file.save(filepath)
               passed = True
               print('No exception')
 
@@ -27,7 +26,6 @@ def upload_image():
               print('Hi, im exception')
               passed = False
             if passed:
-              print(filepath)
               return redirect(url_for('function', file_path = filepath ))
     return render_template("upload_image.html")
 
